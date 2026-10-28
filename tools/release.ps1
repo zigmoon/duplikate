@@ -144,8 +144,8 @@ if ( $next -ne $current ) {
 		$today = Get-Date -Format 'yyyy-MM-dd'
 		$heading = "## [$next] — $today"
 		$bullet = if ( $Summary ) { $Summary } else { 'Maintenance release.' }
-		$text = Replace-First $text '(?m)^## \[' "$heading`n`n### Changed`n`n- $bullet`n`n"
-		$text = Replace-First $text '(?m)^\[1\.' "[$next]: https://github.com/$repo/releases/tag/v$next`n"
+		$text = Replace-First $text '(?m)^## \[' "$heading`n`n### Changed`n`n- $bullet`n`n## ["
+		$text = Replace-First $text '(?m)^\[1\.' "[$next]: https://github.com/$repo/releases/tag/v$next`n[1."
 		Set-Content $changelog -Value $text -NoNewline
 	}
 }

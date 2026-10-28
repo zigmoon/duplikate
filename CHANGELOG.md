@@ -10,7 +10,7 @@ All notable changes to Duplikate are documented here. The format follows
 
 - The upgrade notice keeps a real sentence: a section heading from the release notes no longer becomes the notice.
 
-1.0.1] — 28 October 2026
+## [1.0.1] — 28 October 2026
 
 ### Added
 
@@ -69,5 +69,5 @@ First release.
   options and transients.
 
 [1.0.2]: https://github.com/zigmoon/duplikate/releases/tag/v1.0.2
-0.1]: https://github.com/zigmoon/duplikate/releases/tag/v1.0.1
+[1.0.1]: https://github.com/zigmoon/duplikate/releases/tag/v1.0.1
 [1.0.0]: https://github.com/zigmoon/duplikate/releases/tag/v1.0.0
