@@ -19,8 +19,12 @@
  * @package Duplikate
  */
 
-$version = '1.0.0';
 $root    = dirname( __DIR__ );
+
+// The version embedded in the catalogue header is read from the plugin, so a
+// release can never ship a catalogue that announces the previous version.
+$header  = (string) file_get_contents( $root . '/Duplikate/duplikate.php' );
+$version = preg_match( '/^\s*\*\s*Version:\s*([\d.]+)/m', $header, $match ) ? $match[1] : '0.0.0';
 $domain  = 'duplikate';
 $repo    = 'https://github.com/zigmoon/duplikate/issues';
 
