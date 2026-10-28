@@ -4,7 +4,7 @@ Tags: duplicate post, duplicate page, clone, copy, content
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,7 @@ Duplikate adds a **Duplicate** link to the row actions of every post, page and p
 
 **Never a corrupt database** — the copy is inserted first and every later step runs inside a `try`/`catch` with `Throwable`. If anything fails, the partial copy is discarded before the error is reported, so a failed duplication leaves no orphan post, no orphan row in the term relationships table and no half-copied branch.
 
-**Built for the current stack** — WordPress 6.5 through 7.1, PHP 8.2 through 8.5. Only maintained WordPress APIs, no deprecated calls, no Composer or npm build step, no external request. The test suite runs on PHP 8.3 and PHP 8.5.
+**Built for the current stack** — WordPress 6.5 through 7.1, PHP 8.2 through 8.5. Only maintained WordPress APIs, no deprecated calls, no Composer or npm build step. The single outbound request is the update check against GitHub, once every 12 hours, and it can be switched off. The test suite runs on PHP 8.3 and PHP 8.5.
 
 **Quality**
 
@@ -96,6 +96,10 @@ Yes. Settings are stored per site, and uninstall walks every site when data remo
 
 PHP 8.2 to 8.5, and WordPress 6.5 to 7.1.
 
+= How do updates work? =
+
+The plugin is published on GitHub rather than in the WordPress.org directory, so it brings its own update check: it reads its latest release from github.com and reports it on the Plugins and Updates screens, where "Update now" and automatic updates work exactly as they do for a directory plugin. The check runs every 12 hours at most and can be switched off in Settings → Duplikate → Advanced.
+
 == Screenshots ==
 
 1. The Duplicate link under every title.
@@ -106,6 +110,11 @@ PHP 8.2 to 8.5, and WordPress 6.5 to 7.1.
 
 == Changelog ==
 
+= 1.0.1 =
+* The plugin now updates itself from its GitHub releases: the dashboard shows the new version, "Update now" installs it, and automatic updates can be enabled as for any other plugin. The check runs once every 12 hours and can be switched off in Advanced.
+* Fix: the slug suffix lost its leading dash, so a copy of "atelier" became "ateliercopy" instead of "atelier-copy".
+* The settings screen no longer offers post types the engine always refuses (patterns, navigation menus).
+
 = 1.0.0 =
 * First release.
 * Duplicate link in the row actions, bulk action per post type, button in the classic editor.
@@ -114,6 +123,9 @@ PHP 8.2 to 8.5, and WordPress 6.5 to 7.1.
 * Settings screen, WP-CLI commands and filters.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Adds the update check, so the next release arrives without a manual upload. Nothing to reconfigure.
 
 = 1.0.0 =
 First release.

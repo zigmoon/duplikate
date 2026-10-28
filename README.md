@@ -20,8 +20,8 @@
 <p align="center">
   <img alt="WordPress 6.5 to 7.1" src="https://img.shields.io/badge/WordPress-6.5%20%E2%86%92%207.1-0b0d10?style=flat-square">
   <img alt="PHP 8.2 to 8.5" src="https://img.shields.io/badge/PHP-8.2%20%E2%86%92%208.5-0b0d10?style=flat-square">
-  <img alt="Version 1.0.0" src="https://img.shields.io/badge/version-1.0.0-0a66ff?style=flat-square">
-  <img alt="174 assertions" src="https://img.shields.io/badge/tests-174%20assertions-0b0d10?style=flat-square">
+  <img alt="Version 1.0.1" src="https://img.shields.io/badge/version-1.0.1-0a66ff?style=flat-square">
+  <img alt="196 assertions" src="https://img.shields.io/badge/tests-196%20assertions-0b0d10?style=flat-square">
   <img alt="Licence GPL-2.0-or-later" src="https://img.shields.io/badge/licence-GPL--2.0--or--later-0b0d10?style=flat-square">
 </p>
 
@@ -50,7 +50,7 @@ Click a panel for the full-size view. Each screenshot is the real screen, captur
 - **Metadata that survives.** WordPress's own slashing round trip is respected: a backslash in an ACF field or a JSON blob comes out of the copy exactly as it went in.
 - **Names made unique.** `(copy)`, `(copy 2)`, `(copy 3)` on the title, and a slug WordPress keeps unique on its own. A title that already carries the suffix is never suffixed twice.
 - **Switches, not checkboxes.** Every on/off setting is a real switch — native input, keyboard-navigable, exposed as `role="switch"`.
-- **No third party.** Styles and fonts live inside the plugin. No Google Fonts, no CDN, no analytics, no outbound request, no build step.
+- **No third party.** Styles and fonts live inside the plugin. No Google Fonts, no CDN, no analytics, no build step. The only outbound request is the update check against GitHub, once every 12 hours, and it has a switch.
 - **Built to be removed.** No table, no taxonomy, no rewrite rule. Deactivate and nothing of the plugin is left in your content.
 - **English, French, Spanish.** Source strings in English; the interface follows the site language.
 
@@ -70,15 +70,22 @@ A failed duplication therefore leaves no orphan post, no orphan row in the term 
 
 ## Install
 
-1. Download `Duplikate-1.0.0.zip` from [Releases](https://github.com/zigmoon/duplikate/releases).
+1. Download `Duplikate-1.0.1.zip` from [Releases](https://github.com/zigmoon/duplikate/releases).
 2. **Plugins → Add New → Upload Plugin**, choose the ZIP, install, activate.
 3. **Settings → Duplikate**: pick the post types and what is copied.
 4. Open **Posts** or **Pages**: a **Duplicate** link sits under every title.
 
 No configuration is required to start: pages and posts, drafts, hierarchy, terms and metadata are on, and nothing goes public by accident.
 
-## Compatibility
+## Updates
 
+The plugin lives on GitHub, not in the WordPress.org directory, so it brings its own update check. It declares `Update URI` — the header WordPress 5.8 added for exactly this — and answers the filter core then calls; the new version appears on **Plugins** and **Updates**, "Update now" installs it, and automatic updates can be enabled like any other plugin.
+
+- The check runs at most once every 12 hours, and the answer is cached in a site transient. A failed check is cached for an hour, so an offline site never waits on a timeout.
+- **Settings → Duplikate → Advanced → "Check GitHub for updates"** switches it off. Off means no request at all.
+- A release is only offered when it is a real release (not a draft, not a pre-release) and carries an installable ZIP — never the complete-project archive.
+
+## Compatibility
 | | |
 |---|---|
 | WordPress | 6.5 → 7.1 (latest stable at the time of writing: 7.1.3) |
@@ -106,7 +113,7 @@ docs/                 the screenshots used above
 ```
 
 ```bash
-php tests/run.php            # 110 assertions, no WordPress required
+php tests/run.php            # 132 assertions, no WordPress required
 php tests/smoke.php          # 64 assertions over a mocked WordPress
 php tools/build-translations.php
 pwsh tools/build-zip.ps1
@@ -114,7 +121,7 @@ pwsh tools/build-zip.ps1
 
 ## Quality
 
-- 174 automated assertions (unit tests plus a boot/render smoke test), no test dependency.
+- 196 automated assertions (unit tests plus a boot/render smoke test), no test dependency, including the GitHub release payload.
 - Every string translated in French and Spanish; the catalogue is rebuilt from the source and verified, never edited by hand.
 - Tested against WordPress 7.1.3 / PHP 8.3 and 8.5, next to other plugins, with `WP_DEBUG` on and `debug.log` left empty.
 

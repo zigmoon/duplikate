@@ -8,6 +8,9 @@
  */
 
 return array(
+	'Asks github.com for the latest release once every 12 hours, and shows it on the Plugins and Updates screens. It is the only outbound request the plugin makes: switch it off to keep the plugin fully offline and update by hand.' => 'Interroge github.com une fois toutes les 12 heures pour connaître la dernière version, et l\'affiche dans les écrans Extensions et Mises à jour. C\'est la seule requête sortante du plugin : désactivez-la pour le garder entièrement hors ligne et mettre à jour à la main.',
+	'Check GitHub for updates' => 'Rechercher les mises à jour sur GitHub',
+	'Duplicates pages, posts and any custom post type as a draft, with its hierarchy, its terms and its metadata.' => 'Duplique pages, articles et tout type de contenu personnalisé en brouillon, avec sa hiérarchie, ses termes et ses métadonnées.',
 	'%1$d item(s) were left alone: one run duplicates at most %2$d items.' => '%1$d élément(s) n\'ont pas été traités : une seule exécution duplique au maximum %2$d éléments.',
 	'%d draft copy created.' => array(
 		'%d copie en brouillon créée.',

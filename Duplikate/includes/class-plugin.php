@@ -57,6 +57,10 @@ final class Plugin {
 		$this->settings   = new Settings();
 		$this->duplicator = new Duplicator( $this->settings );
 
+		// Registered on every request: the update check also runs from cron,
+		// where is_admin() is false.
+		( new Updater( $this->settings ) )->hooks();
+
 		if ( function_exists( 'is_admin' ) && is_admin() ) {
 			( new Admin( $this->settings, $this->duplicator ) )->hooks();
 		}

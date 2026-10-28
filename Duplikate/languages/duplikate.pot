@@ -9,67 +9,75 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: duplikate\n"
-#: Duplikate/includes/class-admin.php:474
+#: Duplikate/includes/class-admin.php:482
 msgid "%1$d item(s) were left alone: one run duplicates at most %2$d items."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:692
+#: Duplikate/includes/class-admin.php:700
 msgid "A budget, so that a deeply nested tree cannot exhaust the request. Once reached, the remaining children are skipped rather than half-copied."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:672
+#: Duplikate/includes/class-admin.php:680
 msgid "A page that has children is copied with its whole branch, and every child is reattached to the new parent."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:601
+#: Duplikate/includes/class-admin.php:609
 msgid "Active"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:680
+#: Duplikate/includes/class-admin.php:688
 msgid "Added to the permalink. WordPress makes it unique on its own, so it never collides with an existing page."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:679
+#: Duplikate/includes/class-admin.php:687
 msgid "Added to the title. The second copy becomes “(copy 2)”, the third “(copy 3)”, and a title that already carries the suffix is not suffixed twice."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:689
+#: Duplikate/includes/class-admin.php:697
 msgid "Adds “Duplicate” to the bulk actions menu of each list."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:625
+#: Duplikate/includes/class-admin.php:633
 msgid "Advanced"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:659
+#: Duplikate/includes/class-admin.php:667
 msgid "After duplicating"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:703
+#: Duplikate/includes/class-admin.php:702
+msgid "Asks github.com for the latest release once every 12 hours, and shows it on the Plugins and Updates screens. It is the only outbound request the plugin makes: switch it off to keep the plugin fully offline and update by hand."
+msgstr ""
+
+#: Duplikate/includes/class-admin.php:712
 msgid "Changes apply immediately."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:527
+#: Duplikate/includes/class-admin.php:702
+msgid "Check GitHub for updates"
+msgstr ""
+
+#: Duplikate/includes/class-admin.php:535
 msgid "Choose what is copied"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:673
+#: Duplikate/includes/class-admin.php:681
 msgid "Copy categories and tags"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:672
+#: Duplikate/includes/class-admin.php:680
 msgid "Copy child pages"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:674
+#: Duplikate/includes/class-admin.php:682
 msgid "Copy custom fields"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:675
+#: Duplikate/includes/class-admin.php:683
 msgid "Copy the featured image"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:676
+#: Duplikate/includes/class-admin.php:684
 msgid "Copy the page template"
 msgstr ""
 
@@ -77,11 +85,11 @@ msgstr ""
 msgid "Created #%1$d “%2$s” (%3$d child copies)."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:693
+#: Duplikate/includes/class-admin.php:701
 msgid "Delete all plugin data when the plugin is deleted"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:529
+#: Duplikate/includes/class-admin.php:537
 msgid "Dismiss"
 msgstr ""
 
@@ -89,11 +97,11 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:575
+#: Duplikate/includes/class-admin.php:583
 msgid "Draft"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:656
+#: Duplikate/includes/class-admin.php:664
 msgid "Draft is the safe default: nothing appears publicly until someone publishes it."
 msgstr ""
 
@@ -105,7 +113,11 @@ msgstr ""
 msgid "Duplicate “%s”"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:487 Duplikate/includes/class-duplicator.php:105
+#: Duplikate/includes/class-updater.php:154
+msgid "Duplicates pages, posts and any custom post type as a draft, with its hierarchy, its terms and its metadata."
+msgstr ""
+
+#: Duplikate/includes/class-admin.php:495 Duplikate/includes/class-duplicator.php:117
 msgid "Duplicating this post type is disabled in the settings."
 msgstr ""
 
@@ -113,55 +125,55 @@ msgstr ""
 msgid "Duplikate"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:541
+#: Duplikate/includes/class-admin.php:549
 msgid "Duplikate %1$s — a plugin by %2$s, dev by %3$s."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:524
+#: Duplikate/includes/class-admin.php:532
 msgid "Duplikate is active."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:484 Duplikate/includes/class-duplicator.php:87
+#: Duplikate/includes/class-admin.php:492 Duplikate/includes/class-duplicator.php:99
 msgid "Duplikate is switched off."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:622
+#: Duplikate/includes/class-admin.php:630
 msgid "Duplikate sections"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:636
+#: Duplikate/includes/class-admin.php:644
 msgid "Enable Duplikate"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:673
+#: Duplikate/includes/class-admin.php:681
 msgid "Every term of every taxonomy attached to the type is copied, by id, so two terms with the same name cannot be confused."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:623
+#: Duplikate/includes/class-admin.php:631
 msgid "General"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:686
+#: Duplikate/includes/class-admin.php:694
 msgid "Keep the original author"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:687
+#: Duplikate/includes/class-admin.php:695
 msgid "Keep the original date"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:676
+#: Duplikate/includes/class-admin.php:684
 msgid "Keeps the template chosen for the original."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:691
+#: Duplikate/includes/class-admin.php:699
 msgid "Limits and cleanup"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:692
+#: Duplikate/includes/class-admin.php:700
 msgid "Maximum children per duplication"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:678
+#: Duplikate/includes/class-admin.php:686
 msgid "Names"
 msgstr ""
 
@@ -173,47 +185,47 @@ msgstr ""
 msgid "No user is set: add --user=<login>."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:601
+#: Duplikate/includes/class-admin.php:609
 msgid "Off"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:686
+#: Duplikate/includes/class-admin.php:694
 msgid "Off, the copy belongs to whoever duplicated it — the usual choice when a team works on the same site."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:687
+#: Duplikate/includes/class-admin.php:695
 msgid "Off, the copy is dated now, which keeps the list in a sensible order."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:689
+#: Duplikate/includes/class-admin.php:697
 msgid "Offer the bulk action"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:605
+#: Duplikate/includes/class-admin.php:613
 msgid "One click under any title: a draft copy with its hierarchy, its terms and its metadata — and nothing left half-written if something fails."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:693
+#: Duplikate/includes/class-admin.php:701
 msgid "Only the settings and the version marker: Duplikate never stores anything about your content."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:525
+#: Duplikate/includes/class-admin.php:533
 msgid "Open a post or a page list: a “Duplicate” link now sits under every title."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:662
+#: Duplikate/includes/class-admin.php:670
 msgid "Open the new draft in the editor"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:576
+#: Duplikate/includes/class-admin.php:584
 msgid "Pending review"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:641
+#: Duplikate/includes/class-admin.php:649
 msgid "Post types"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:577
+#: Duplikate/includes/class-admin.php:585
 msgid "Private"
 msgstr ""
 
@@ -221,15 +233,15 @@ msgstr ""
 msgid "Provide the id of the post to duplicate."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:698
+#: Duplikate/includes/class-admin.php:707
 msgid "Revisions, comments, edit locks, the trash status, the old-slug markers, attachments and menu items. A duplicate is content, not a second history."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:578
+#: Duplikate/includes/class-admin.php:586
 msgid "Same as the original"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:704
+#: Duplikate/includes/class-admin.php:713
 msgid "Save changes"
 msgstr ""
 
@@ -237,79 +249,79 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:503
+#: Duplikate/includes/class-admin.php:511
 msgid "Settings saved."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:674
+#: Duplikate/includes/class-admin.php:682
 msgid "Shop settings, layout options, SEO fields: everything except edit locks, old slugs and the trash markers."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:688
+#: Duplikate/includes/class-admin.php:696
 msgid "Show the link under each title"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:680
+#: Duplikate/includes/class-admin.php:688
 msgid "Slug suffix"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:656
+#: Duplikate/includes/class-admin.php:664
 msgid "Status of the copy"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:663
+#: Duplikate/includes/class-admin.php:671
 msgid "Stay on the list"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:638
+#: Duplikate/includes/class-admin.php:646
 msgid "Switching this off removes every Duplicate link without touching a single post."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:485 Duplikate/includes/class-duplicator.php:93 Duplikate/includes/class-duplicator.php:144
+#: Duplikate/includes/class-admin.php:493 Duplikate/includes/class-duplicator.php:105 Duplikate/includes/class-duplicator.php:156
 msgid "That content no longer exists."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:643
+#: Duplikate/includes/class-admin.php:651
 msgid "The Duplicate link appears in the list and the editor of the types you tick."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:655
+#: Duplikate/includes/class-admin.php:663
 msgid "The copy"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:490 Duplikate/includes/class-admin.php:496 Duplikate/includes/class-duplicator.php:229
+#: Duplikate/includes/class-admin.php:498 Duplikate/includes/class-admin.php:504 Duplikate/includes/class-duplicator.php:241
 msgid "The copy could not be created."
 msgstr ""
 
-#: Duplikate/includes/class-duplicator.php:223
+#: Duplikate/includes/class-duplicator.php:235
 msgid "The copy could not be created: %s"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:675
+#: Duplikate/includes/class-admin.php:683
 msgid "The copy points at the same image; the file itself is not duplicated."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:491
+#: Duplikate/includes/class-admin.php:499
 msgid "The copy was cancelled and removed, so nothing was left half-written."
 msgstr ""
 
-#: Duplikate/includes/class-duplicator.php:240
+#: Duplikate/includes/class-duplicator.php:252
 msgid "The copy was cancelled: %s"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:688
+#: Duplikate/includes/class-admin.php:696
 msgid "The “Duplicate” link in the list and the button in the editor."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:488 Duplikate/includes/class-duplicator.php:101
+#: Duplikate/includes/class-admin.php:496 Duplikate/includes/class-duplicator.php:113
 msgid "This content is not in a state that can be duplicated."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:486 Duplikate/includes/class-duplicator.php:97
+#: Duplikate/includes/class-admin.php:494 Duplikate/includes/class-duplicator.php:109
 msgid "This kind of content cannot be duplicated."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:679
+#: Duplikate/includes/class-admin.php:687
 msgid "Title suffix"
 msgstr ""
 
@@ -317,23 +329,23 @@ msgstr ""
 msgid "Unknown status."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:624
+#: Duplikate/includes/class-admin.php:632
 msgid "What is copied"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:697
+#: Duplikate/includes/class-admin.php:706
 msgid "What is never copied"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:665
+#: Duplikate/includes/class-admin.php:673
 msgid "With the list, the copy is marked as a draft and you can keep working."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:382 Duplikate/includes/class-admin.php:408
+#: Duplikate/includes/class-admin.php:382 Duplikate/includes/class-admin.php:416
 msgid "You are not allowed to change these settings."
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:291 Duplikate/includes/class-admin.php:489 Duplikate/includes/class-duplicator.php:109 Duplikate/includes/class-duplicator.php:121
+#: Duplikate/includes/class-admin.php:291 Duplikate/includes/class-admin.php:497 Duplikate/includes/class-duplicator.php:121 Duplikate/includes/class-duplicator.php:133
 msgid "You are not allowed to duplicate this content."
 msgstr ""
 
@@ -349,7 +361,7 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:613
+#: Duplikate/includes/class-admin.php:621
 msgid "v%s · PHP %s+ · WordPress %s+"
 msgstr ""
 
@@ -357,13 +369,13 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: Duplikate/includes/class-admin.php:448
+#: Duplikate/includes/class-admin.php:456
 msgid "%d draft copy created."
 msgid_plural "%d draft copies created."
 msgstr[0] ""
 msgstr[1] ""
 
-#: Duplikate/includes/class-admin.php:461
+#: Duplikate/includes/class-admin.php:469
 msgid "%d item could not be duplicated."
 msgid_plural "%d items could not be duplicated."
 msgstr[0] ""

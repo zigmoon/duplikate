@@ -38,6 +38,66 @@ $GLOBALS['dup_die']         = null;
 $GLOBALS['dup_redirect']    = null;
 $GLOBALS['dup_meta_fail']   = array();
 $GLOBALS['dup_term_fail']   = array();
+$GLOBALS['dup_transients']  = array();
+$GLOBALS['dup_http']        = null;
+$GLOBALS['dup_http_calls']  = array();
+
+/* -------------------------------------------------------------------------
+ * Transients and HTTP: the updater needs both, and neither may touch the
+ * network during a test run.
+ * ---------------------------------------------------------------------- */
+
+function get_transient( $name ) {
+	return array_key_exists( $name, $GLOBALS['dup_transients'] ) ? $GLOBALS['dup_transients'][ $name ] : false;
+}
+
+function set_transient( $name, $value, $ttl = 0 ) {
+	$GLOBALS['dup_transients'][ $name ] = $value;
+
+	return true;
+}
+
+function delete_transient( $name ) {
+	unset( $GLOBALS['dup_transients'][ $name ] );
+
+	return true;
+}
+
+function get_site_transient( $name ) {
+	return get_transient( 'site_' . $name );
+}
+
+function set_site_transient( $name, $value, $ttl = 0 ) {
+	return set_transient( 'site_' . $name, $value, $ttl );
+}
+
+function delete_site_transient( $name ) {
+	return delete_transient( 'site_' . $name );
+}
+
+function wp_remote_get( $url, $args = array() ) {
+	$GLOBALS['dup_http_calls'][] = $url;
+
+	return $GLOBALS['dup_http'] ?? new WP_Error( 'http_request_failed', 'no stub response' );
+}
+
+function wp_remote_retrieve_response_code( $response ) {
+	return is_array( $response ) ? ( $response['response']['code'] ?? 0 ) : 0;
+}
+
+function wp_remote_retrieve_body( $response ) {
+	return is_array( $response ) ? (string) ( $response['body'] ?? '' ) : '';
+}
+
+function wp_http_validate_url( $url ) {
+	$scheme = wp_parse_url( (string) $url, PHP_URL_SCHEME );
+
+	return in_array( strtolower( (string) $scheme ), array( 'http', 'https' ), true ) ? $url : false;
+}
+
+function get_bloginfo( $show = '' ) {
+	return '7.1.3';
+}
 
 /* -------------------------------------------------------------------------
  * Value objects.

@@ -11,9 +11,11 @@ require_once __DIR__ . '/bootstrap.php';
 
 require_once dirname( __DIR__ ) . '/Duplikate/includes/class-settings.php';
 require_once dirname( __DIR__ ) . '/Duplikate/includes/class-duplicator.php';
+require_once dirname( __DIR__ ) . '/Duplikate/includes/class-updater.php';
 
 use Duplikate\Duplicator;
 use Duplikate\Settings;
+use Duplikate\Updater;
 
 $GLOBALS['dup_pass'] = 0;
 $GLOBALS['dup_fail'] = 0;
@@ -517,6 +519,82 @@ add_action(
 );
 $fired = ( new Duplicator( dup_settings() ) )->duplicate( $hooked );
 dup_assert( in_array( $fired['id'], $events, true ), 'the action fires with the new id' );
+
+/* -------------------------------------------------------------------------
+ * Updates: the release payload, the archive choice and the filter answer.
+ * ---------------------------------------------------------------------- */
+
+dup_same( '1.0.1', Updater::normalise_version( 'v1.0.1' ), 'a tag drops its v prefix' );
+dup_same( '1.0.1', Updater::normalise_version( 'release/1.0.1' ), 'the digits are found inside a decorated tag' );
+dup_same( '', Updater::normalise_version( 'nightly' ), 'a tag without digits is refused' );
+
+$release = array(
+	'tag_name'     => 'v1.0.1',
+	'html_url'     => 'https://github.com/zigmoon/duplikate/releases/tag/v1.0.1',
+	'published_at' => '2026-10-28T09:00:00Z',
+	'draft'        => false,
+	'prerelease'   => false,
+	'body'         => "The plugin now knows when a new release exists.\n\n- Added the GitHub update check.\n- Fixed the slug suffix.\n",
+	'assets'       => array(
+		array( 'name' => 'Duplikate-1.0.1-projet-complet.zip', 'browser_download_url' => 'https://github.com/zigmoon/duplikate/releases/download/v1.0.1/Duplikate-1.0.1-projet-complet.zip' ),
+		array( 'name' => 'Duplikate-1.0.1.zip', 'browser_download_url' => 'https://github.com/zigmoon/duplikate/releases/download/v1.0.1/Duplikate-1.0.1.zip' ),
+	),
+);
+
+$parsed = Updater::parse_release( $release );
+dup_same( '1.0.1', $parsed['version'] ?? '', 'the release version comes from the tag' );
+dup_assert( str_ends_with( $parsed['package'] ?? '', '/Duplikate-1.0.1.zip' ), 'the installable archive is chosen, not the complete project' );
+dup_assert( str_contains( $parsed['notice'] ?? '', 'knows when a new release' ), 'the upgrade notice takes the first paragraph' );
+
+$draft = $release;
+$draft['draft'] = true;
+dup_same( null, Updater::parse_release( $draft ), 'a draft release is ignored' );
+
+$pre = $release;
+$pre['prerelease'] = true;
+dup_same( null, Updater::parse_release( $pre ), 'a pre-release is ignored' );
+
+$no_zip = $release;
+$no_zip['assets'] = array( array( 'name' => 'Duplikate-1.0.1-projet-complet.zip', 'browser_download_url' => 'https://github.com/x/y.zip' ) );
+dup_same( null, Updater::parse_release( $no_zip ), 'no installable archive means no update at all' );
+
+dup_same( '', Updater::pick_asset( array( array( 'name' => 'vaultgate-1.1.8.zip', 'browser_download_url' => 'https://example.test/x.zip' ) ) ), 'an archive for another plugin is refused' );
+
+$checking = new Updater( new Settings() );
+$GLOBALS['dup_http'] = array( 'response' => array( 'code' => 200 ), 'body' => wp_json_encode( $release ) );
+
+$answer = $checking->inject( false, array( 'Version' => '1.0.0', 'Tested up to' => '7.1', 'Requires PHP' => '8.2' ), DUPLIKATE_BASENAME );
+dup_assert( is_array( $answer ), 'a newer release is offered to the dashboard' );
+dup_same( '1.0.1', $answer['version'] ?? '', 'the offered version is the release version' );
+dup_same( 'duplikate', $answer['slug'] ?? '', 'the update carries the plugin slug' );
+
+dup_same( false, $checking->inject( false, array(), 'VaultGate/vaultgate.php' ), 'a sibling plugin is left alone' );
+dup_same( false, $checking->inject( false, array(), 'other/other.php' ), 'an unrelated plugin is left alone' );
+
+$calls = count( $GLOBALS['dup_http_calls'] );
+$checking->inject( false, array( 'Version' => '1.0.0' ), DUPLIKATE_BASENAME );
+dup_same( $calls, count( $GLOBALS['dup_http_calls'] ), 'the answer is served from the transient, not from a second request' );
+
+delete_site_transient( Updater::TRANSIENT );
+$GLOBALS['dup_options']['duplikate_settings'] = array_merge( Settings::defaults(), array( 'check_updates' => false ) );
+$silent = new Updater( new Settings() );
+$before = count( $GLOBALS['dup_http_calls'] );
+dup_same( false, $silent->inject( false, array( 'Version' => '1.0.0' ), DUPLIKATE_BASENAME ), 'the switch off means no update is offered' );
+dup_same( $before, count( $GLOBALS['dup_http_calls'] ), 'the switch off means no request is made' );
+$GLOBALS['dup_options']['duplikate_settings'] = array_merge( Settings::defaults(), array( 'check_updates' => true ) );
+
+delete_site_transient( Updater::TRANSIENT );
+$GLOBALS['dup_http'] = new WP_Error( 'http_request_failed', 'offline' );
+$offline = new Updater( new Settings() );
+dup_same( false, $offline->inject( false, array( 'Version' => '1.0.0' ), DUPLIKATE_BASENAME ), 'an unreachable API offers nothing' );
+$cached = get_site_transient( Updater::TRANSIENT );
+dup_assert( is_array( $cached ) && array_key_exists( 'release', $cached ) && null === $cached['release'], 'a failure is cached as an empty answer' );
+
+set_site_transient( Updater::TRANSIENT, array( 'release' => $parsed ), 3600 );
+$checking->flush( new stdClass(), array( 'plugin' => 'other/other.php' ) );
+dup_assert( false !== get_site_transient( Updater::TRANSIENT ), 'an unrelated upgrade keeps the cache' );
+$checking->flush( new stdClass(), array( 'plugin' => DUPLIKATE_BASENAME ) );
+dup_same( false, get_site_transient( Updater::TRANSIENT ), 'updating the plugin drops the cache' );
 
 /* -------------------------------------------------------------------------
  * Report.

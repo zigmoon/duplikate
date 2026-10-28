@@ -64,6 +64,7 @@ final class Settings {
 			'redirect'       => 'edit',
 			'max_children'   => 50,
 			'delete_data'    => true,
+			'check_updates'  => true,
 		);
 	}
 
@@ -175,7 +176,7 @@ final class Settings {
 		$defaults = array_merge( self::defaults(), $fallback );
 		$clean    = array();
 
-		foreach ( array( 'enabled', 'copy_children', 'copy_taxonomies', 'copy_meta', 'copy_thumbnail', 'copy_template', 'keep_author', 'keep_date', 'row_action', 'bulk_action', 'delete_data' ) as $flag ) {
+		foreach ( array( 'enabled', 'copy_children', 'copy_taxonomies', 'copy_meta', 'copy_thumbnail', 'copy_template', 'keep_author', 'keep_date', 'row_action', 'bulk_action', 'delete_data', 'check_updates' ) as $flag ) {
 			$value        = $input[ $flag ] ?? null;
 			$clean[ $flag ] = is_scalar( $value ) ? ! empty( $value ) : (bool) $defaults[ $flag ];
 		}

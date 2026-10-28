@@ -2,8 +2,9 @@
 /**
  * Plugin Name:       Duplikate
  * Plugin URI:        https://github.com/zigmoon/duplikate
+ * Update URI:        https://github.com/zigmoon/duplikate
  * Description:       Duplicates pages, posts and any custom post type — hierarchy, taxonomies and metadata included — as a draft, with one click under the title and no database risk.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.5
  * Tested up to:      7.1
  * Requires PHP:      8.2
@@ -22,7 +23,7 @@ namespace Duplikate;
 defined( 'ABSPATH' ) || exit;
 
 if ( ! defined( 'DUPLIKATE_VERSION' ) ) {
-	define( 'DUPLIKATE_VERSION', '1.0.0' );
+	define( 'DUPLIKATE_VERSION', '1.0.1' );
 }
 if ( ! defined( 'DUPLIKATE_FILE' ) ) {
 	define( 'DUPLIKATE_FILE', __FILE__ );
@@ -39,6 +40,7 @@ if ( ! defined( 'DUPLIKATE_BASENAME' ) ) {
 
 require_once DUPLIKATE_DIR . 'includes/class-settings.php';
 require_once DUPLIKATE_DIR . 'includes/class-duplicator.php';
+require_once DUPLIKATE_DIR . 'includes/class-updater.php';
 require_once DUPLIKATE_DIR . 'includes/class-admin.php';
 require_once DUPLIKATE_DIR . 'includes/class-cli.php';
 require_once DUPLIKATE_DIR . 'includes/class-plugin.php';

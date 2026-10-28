@@ -386,7 +386,15 @@ final class Admin {
 
 		$raw = isset( $_POST['duplikate'] ) && is_array( $_POST['duplikate'] ) ? wp_unslash( $_POST['duplikate'] ) : array();
 
+		$was_checking = (bool) $this->settings->get( 'check_updates' );
+
 		$this->settings->update( $raw );
+
+		// The plugin list is rebuilt from this transient: dropping it makes the
+		// switch take effect on the next screen instead of in twelve hours.
+		if ( $was_checking !== (bool) $this->settings->get( 'check_updates' ) ) {
+			delete_site_transient( Updater::TRANSIENT );
+		}
 
 		wp_safe_redirect(
 			add_query_arg(
@@ -691,6 +699,7 @@ final class Admin {
 					$this->section( __( 'Limits and cleanup', 'duplikate' ) );
 					$this->field_number( 'max_children', __( 'Maximum children per duplication', 'duplikate' ), (int) $settings['max_children'], 1, 200, __( 'A budget, so that a deeply nested tree cannot exhaust the request. Once reached, the remaining children are skipped rather than half-copied.', 'duplikate' ) );
 					$this->field_switch( 'delete_data', __( 'Delete all plugin data when the plugin is deleted', 'duplikate' ), (bool) $settings['delete_data'], __( 'Only the settings and the version marker: Duplikate never stores anything about your content.', 'duplikate' ) );
+					$this->field_switch( 'check_updates', __( 'Check GitHub for updates', 'duplikate' ), (bool) $settings['check_updates'], __( 'Asks github.com for the latest release once every 12 hours, and shows it on the Plugins and Updates screens. It is the only outbound request the plugin makes: switch it off to keep the plugin fully offline and update by hand.', 'duplikate' ) );
 					?>
 
 					<div class="dup-note">
