@@ -546,6 +546,20 @@ dup_same( '1.0.1', $parsed['version'] ?? '', 'the release version comes from the
 dup_assert( str_ends_with( $parsed['package'] ?? '', '/Duplikate-1.0.1.zip' ), 'the installable archive is chosen, not the complete project' );
 dup_assert( str_contains( $parsed['notice'] ?? '', 'knows when a new release' ), 'the upgrade notice takes the first paragraph' );
 
+dup_same( '', Updater::first_paragraph( "### Added
+
+- one
+- two
+" ), 'a section heading is not an upgrade notice' );
+dup_same( '', Updater::first_paragraph( "**Added**
+
+- one
+" ), 'a bolded heading is not an upgrade notice either' );
+dup_same( 'A real sentence here.', Updater::first_paragraph( "**Added**
+
+A real sentence here.
+" ), 'the first real sentence wins' );
+
 $draft = $release;
 $draft['draft'] = true;
 dup_same( null, Updater::parse_release( $draft ), 'a draft release is ignored' );

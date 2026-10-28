@@ -329,8 +329,9 @@ final class Updater {
 	/**
 	 * The first prose line of a release body, for the upgrade notice.
 	 *
-	 * Headings, list items and the "first release" formula are skipped: a
-	 * notice made of a bullet list reads worse than no notice at all.
+	 * Headings, list items, the "first release" formula and any fragment too
+	 * short to be a sentence are skipped: a notice made of a section heading
+	 * reads worse than no notice at all.
 	 *
 	 * @param string $body Release body, Markdown.
 	 */
@@ -346,6 +347,10 @@ final class Updater {
 			$text = trim( str_replace( array( '**', '__', '`' ), '', $text ) );
 
 			if ( '' === $text || preg_match( '/^(first release\.?|initial release\.?)$/i', $text ) ) {
+				continue;
+			}
+
+			if ( count( preg_split( '/\s+/u', $text ) ?: array() ) < 3 ) {
 				continue;
 			}
 

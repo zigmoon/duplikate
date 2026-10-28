@@ -44,6 +44,8 @@ param(
 
 	[string] $Notes = '',
 
+	[string] $Summary = '',
+
 	[switch] $DryRun,
 
 	[string] $Root = (Split-Path -Parent $PSScriptRoot)
@@ -88,6 +90,18 @@ function Get-UtilToken {
 	return ''
 }
 
+function Replace-First( [string] $text, [string] $pattern, [string] $insertion ) {
+	# PowerShell's -replace has no 'first match only' form, and the .NET one
+	# interprets $ in the replacement: splicing the string avoids both.
+	$match = [regex]::Match( $text, $pattern )
+
+	if ( -not $match.Success ) {
+		return $text
+	}
+
+	return $text.Substring( 0, $match.Index ) + $insertion + $text.Substring( $match.Index + $match.Length )
+}
+
 # ── 1. Current version ──────────────────────────────────────────────────────
 
 $header   = ( Get-Content $mainFile -TotalCount 30 ) -join "`n"
@@ -111,7 +125,7 @@ if ( $next -ne $current ) {
 	Write-Step "Bumping to $next"
 
 	$text = Get-Content $mainFile -Raw
-	$text = $text -replace "(?m)^(\s*\*\s*Version:\s*)$([regex]::Escape( $current ))`$", "`${1}$next"
+	$text = $text -replace "(?m)^(\s*\*\s*Version:[ \t]*)$([regex]::Escape( $current ))[ \t]*\r?`$", "`${1}$next"
 	$text = $text -replace "define\( '$($slug.ToUpper())_VERSION', '$([regex]::Escape( $current ))' \);", "define( '$($slug.ToUpper())_VERSION', '$next' );"
 	Set-Content $mainFile -Value $text -NoNewline
 
@@ -129,8 +143,9 @@ if ( $next -ne $current ) {
 	if ( -not $text.Contains( "## [$next]" ) ) {
 		$today = Get-Date -Format 'yyyy-MM-dd'
 		$heading = "## [$next] — $today"
-		$text = $text -replace "(?m)^## \[", "$heading`n`n### Changed`n`n- `n`n## [", 1
-		$text = $text -replace '(?m)^\[1\.', "[$next]: https://github.com/$repo/releases/tag/v$next`n[1.", 1
+		$bullet = if ( $Summary ) { $Summary } else { 'Maintenance release.' }
+		$text = Replace-First $text '(?m)^## \[' "$heading`n`n### Changed`n`n- $bullet`n`n"
+		$text = Replace-First $text '(?m)^\[1\.' "[$next]: https://github.com/$repo/releases/tag/v$next`n"
 		Set-Content $changelog -Value $text -NoNewline
 	}
 }
@@ -243,7 +258,7 @@ $headers = @{
 if ( '' -eq $Notes ) {
 	$raw   = Get-Content $changelog -Raw
 	$block = [regex]::Match( $raw, "(?s)## \[$([regex]::Escape( $next ))\][^\n]*\n(.*?)(?=\n## \[|\z)" ).Groups[1].Value
-	$Notes = ( $block -replace '(?m)^###\s*(.+)$', '**$1**' ).Trim()
+	$Notes = $block.Trim()
 }
 
 $body = @{
