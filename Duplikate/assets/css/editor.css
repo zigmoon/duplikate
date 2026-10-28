@@ -1,0 +1,13 @@
+/* Duplikate — the editor row, in the post status panel. */
+
+.duplikate-editor-action {
+	display: block;
+}
+
+.duplikate-editor-action .duplikate-editor-hint {
+	display: block;
+	margin-top: 2px;
+	color: #646970;
+	font-size: 12px;
+	line-height: 1.4;
+}

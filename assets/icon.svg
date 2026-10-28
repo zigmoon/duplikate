@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Duplikate">
+	<title>Duplikate</title>
+	<!-- Rounded card: the near-white plate the mark sits on. -->
+	<rect x="0" y="0" width="512" height="512" rx="76" fill="#f7f8fa"/>
+
+	<!-- Back sheet. -->
+	<rect x="196" y="98" width="218" height="218" fill="none" stroke="#0b0d10" stroke-width="30"/>
+
+	<!-- Card-coloured mask: hides the part of the back sheet the front one covers. -->
+	<rect x="83" y="181" width="248" height="248" fill="#f7f8fa"/>
+
+	<!-- Front sheet. -->
+	<rect x="98" y="196" width="218" height="218" fill="none" stroke="#0b0d10" stroke-width="30"/>
+
+	<!-- Two rules: the content that travels with the copy. -->
+	<rect x="145" y="265" width="124" height="28" fill="#0b0d10"/>
+	<rect x="145" y="317" width="124" height="28" fill="#0b0d10"/>
+</svg>

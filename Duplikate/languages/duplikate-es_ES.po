@@ -1,0 +1,375 @@
+# Spanish translation for Duplikate.
+# Distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: Duplikate 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/zigmoon/duplikate/issues\n"
+"POT-Creation-Date: 2026-10-28T00:00:00+00:00\n"
+"PO-Revision-Date: 2026-10-28T00:00:00+00:00\n"
+"Last-Translator: zigmoon\n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: duplikate\n"
+#: Duplikate/includes/class-admin.php:474
+msgid "%1$d item(s) were left alone: one run duplicates at most %2$d items."
+msgstr "%1$d elemento(s) sin procesar: una ejecución duplica como máximo %2$d elementos."
+
+#: Duplikate/includes/class-admin.php:692
+msgid "A budget, so that a deeply nested tree cannot exhaust the request. Once reached, the remaining children are skipped rather than half-copied."
+msgstr "Un límite, para que un árbol muy anidado no agote la petición. Una vez alcanzado, los hijos restantes se omiten en lugar de copiarse a medias."
+
+#: Duplikate/includes/class-admin.php:672
+msgid "A page that has children is copied with its whole branch, and every child is reattached to the new parent."
+msgstr "Una página con hijos se copia con toda su rama, y cada hijo se vuelve a vincular al nuevo padre."
+
+#: Duplikate/includes/class-admin.php:601
+msgid "Active"
+msgstr "Activo"
+
+#: Duplikate/includes/class-admin.php:680
+msgid "Added to the permalink. WordPress makes it unique on its own, so it never collides with an existing page."
+msgstr "Se añade al enlace permanente. WordPress lo hace único por sí mismo, así que nunca choca con una página existente."
+
+#: Duplikate/includes/class-admin.php:679
+msgid "Added to the title. The second copy becomes “(copy 2)”, the third “(copy 3)”, and a title that already carries the suffix is not suffixed twice."
+msgstr "Se añade al título. La segunda copia pasa a ser «(copia 2)», la tercera «(copia 3)», y un título que ya lleva el sufijo no se vuelve a sufijar."
+
+#: Duplikate/includes/class-admin.php:689
+msgid "Adds “Duplicate” to the bulk actions menu of each list."
+msgstr "Añade «Duplicar» al menú de acciones en lote de cada lista."
+
+#: Duplikate/includes/class-admin.php:625
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: Duplikate/includes/class-admin.php:659
+msgid "After duplicating"
+msgstr "Después de duplicar"
+
+#: Duplikate/includes/class-admin.php:703
+msgid "Changes apply immediately."
+msgstr "Los cambios se aplican al instante."
+
+#: Duplikate/includes/class-admin.php:527
+msgid "Choose what is copied"
+msgstr "Elegir qué se copia"
+
+#: Duplikate/includes/class-admin.php:673
+msgid "Copy categories and tags"
+msgstr "Copiar categorías y etiquetas"
+
+#: Duplikate/includes/class-admin.php:672
+msgid "Copy child pages"
+msgstr "Copiar páginas hijas"
+
+#: Duplikate/includes/class-admin.php:674
+msgid "Copy custom fields"
+msgstr "Copiar campos personalizados"
+
+#: Duplikate/includes/class-admin.php:675
+msgid "Copy the featured image"
+msgstr "Copiar la imagen destacada"
+
+#: Duplikate/includes/class-admin.php:676
+msgid "Copy the page template"
+msgstr "Copiar la plantilla de página"
+
+#: Duplikate/includes/class-cli.php:121
+msgid "Created #%1$d “%2$s” (%3$d child copies)."
+msgstr "Creado #%1$d «%2$s» (%3$d copias de hijos)."
+
+#: Duplikate/includes/class-admin.php:693
+msgid "Delete all plugin data when the plugin is deleted"
+msgstr "Eliminar todos los datos del plugin al eliminarlo"
+
+#: Duplikate/includes/class-admin.php:529
+msgid "Dismiss"
+msgstr "Descartar"
+
+#: Duplikate/includes/class-admin.php:180
+msgid "Documentation"
+msgstr "Documentación"
+
+#: Duplikate/includes/class-admin.php:575
+msgid "Draft"
+msgstr "Borrador"
+
+#: Duplikate/includes/class-admin.php:656
+msgid "Draft is the safe default: nothing appears publicly until someone publishes it."
+msgstr "El borrador es la opción segura: nada aparece públicamente hasta que alguien lo publique."
+
+#: Duplikate/includes/class-admin.php:148 Duplikate/includes/class-admin.php:216 Duplikate/includes/class-admin.php:230 Duplikate/includes/class-admin.php:371
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: Duplikate/includes/class-admin.php:212
+msgid "Duplicate “%s”"
+msgstr "Duplicar «%s»"
+
+#: Duplikate/includes/class-admin.php:487 Duplikate/includes/class-duplicator.php:105
+msgid "Duplicating this post type is disabled in the settings."
+msgstr "La duplicación de este tipo de contenido está desactivada en los ajustes."
+
+#: Duplikate/includes/class-admin.php:86 Duplikate/includes/class-admin.php:87
+msgid "Duplikate"
+msgstr "Duplikate"
+
+#: Duplikate/includes/class-admin.php:541
+msgid "Duplikate %1$s — a plugin by %2$s, dev by %3$s."
+msgstr "Duplikate %1$s — un plugin de %2$s, desarrollo de %3$s."
+
+#: Duplikate/includes/class-admin.php:524
+msgid "Duplikate is active."
+msgstr "Duplikate está activo."
+
+#: Duplikate/includes/class-admin.php:484 Duplikate/includes/class-duplicator.php:87
+msgid "Duplikate is switched off."
+msgstr "Duplikate está desactivado."
+
+#: Duplikate/includes/class-admin.php:622
+msgid "Duplikate sections"
+msgstr "Secciones de Duplikate"
+
+#: Duplikate/includes/class-admin.php:636
+msgid "Enable Duplikate"
+msgstr "Activar Duplikate"
+
+#: Duplikate/includes/class-admin.php:673
+msgid "Every term of every taxonomy attached to the type is copied, by id, so two terms with the same name cannot be confused."
+msgstr "Se copia cada término de cada taxonomía del tipo, por identificador: dos términos con el mismo nombre no pueden confundirse."
+
+#: Duplikate/includes/class-admin.php:623
+msgid "General"
+msgstr "General"
+
+#: Duplikate/includes/class-admin.php:686
+msgid "Keep the original author"
+msgstr "Mantener el autor original"
+
+#: Duplikate/includes/class-admin.php:687
+msgid "Keep the original date"
+msgstr "Mantener la fecha original"
+
+#: Duplikate/includes/class-admin.php:676
+msgid "Keeps the template chosen for the original."
+msgstr "Conserva la plantilla elegida para el original."
+
+#: Duplikate/includes/class-admin.php:691
+msgid "Limits and cleanup"
+msgstr "Límites y limpieza"
+
+#: Duplikate/includes/class-admin.php:692
+msgid "Maximum children per duplication"
+msgstr "Máximo de hijos por duplicación"
+
+#: Duplikate/includes/class-admin.php:678
+msgid "Names"
+msgstr "Nombres"
+
+#: Duplikate/includes/class-admin.php:285
+msgid "No content was selected."
+msgstr "No se ha seleccionado ningún contenido."
+
+#: Duplikate/includes/class-cli.php:106
+msgid "No user is set: add --user=<login>."
+msgstr "No hay usuario definido: añade --user=<login>."
+
+#: Duplikate/includes/class-admin.php:601
+msgid "Off"
+msgstr "No"
+
+#: Duplikate/includes/class-admin.php:686
+msgid "Off, the copy belongs to whoever duplicated it — the usual choice when a team works on the same site."
+msgstr "Desactivado, la copia pertenece a quien la duplicó — la opción habitual cuando un equipo trabaja en el mismo sitio."
+
+#: Duplikate/includes/class-admin.php:687
+msgid "Off, the copy is dated now, which keeps the list in a sensible order."
+msgstr "Desactivado, la copia se fecha ahora, lo que mantiene la lista en un orden lógico."
+
+#: Duplikate/includes/class-admin.php:689
+msgid "Offer the bulk action"
+msgstr "Ofrecer la acción en lote"
+
+#: Duplikate/includes/class-admin.php:605
+msgid "One click under any title: a draft copy with its hierarchy, its terms and its metadata — and nothing left half-written if something fails."
+msgstr "Un clic bajo cualquier título: una copia en borrador con su jerarquía, sus términos y sus metadatos — y nada a medio escribir si algo falla."
+
+#: Duplikate/includes/class-admin.php:693
+msgid "Only the settings and the version marker: Duplikate never stores anything about your content."
+msgstr "Solo los ajustes y el número de versión: Duplikate nunca guarda nada sobre tus contenidos."
+
+#: Duplikate/includes/class-admin.php:525
+msgid "Open a post or a page list: a “Duplicate” link now sits under every title."
+msgstr "Abre la lista de entradas o de páginas: un enlace «Duplicar» aparece bajo cada título."
+
+#: Duplikate/includes/class-admin.php:662
+msgid "Open the new draft in the editor"
+msgstr "Abrir el nuevo borrador en el editor"
+
+#: Duplikate/includes/class-admin.php:576
+msgid "Pending review"
+msgstr "Pendiente de revisión"
+
+#: Duplikate/includes/class-admin.php:641
+msgid "Post types"
+msgstr "Tipos de contenido"
+
+#: Duplikate/includes/class-admin.php:577
+msgid "Private"
+msgstr "Privado"
+
+#: Duplikate/includes/class-cli.php:82
+msgid "Provide the id of the post to duplicate."
+msgstr "Indica el identificador del contenido que quieres duplicar."
+
+#: Duplikate/includes/class-admin.php:698
+msgid "Revisions, comments, edit locks, the trash status, the old-slug markers, attachments and menu items. A duplicate is content, not a second history."
+msgstr "Revisiones, comentarios, bloqueos de edición, el estado de papelera, los marcadores de enlaces antiguos, los adjuntos y los elementos de menú. Una copia es contenido, no un segundo historial."
+
+#: Duplikate/includes/class-admin.php:578
+msgid "Same as the original"
+msgstr "Igual que el original"
+
+#: Duplikate/includes/class-admin.php:704
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: Duplikate/includes/class-admin.php:161
+msgid "Settings"
+msgstr "Ajustes"
+
+#: Duplikate/includes/class-admin.php:503
+msgid "Settings saved."
+msgstr "Ajustes guardados."
+
+#: Duplikate/includes/class-admin.php:674
+msgid "Shop settings, layout options, SEO fields: everything except edit locks, old slugs and the trash markers."
+msgstr "Ajustes de tienda, opciones de diseño, campos SEO: todo excepto los bloqueos de edición, los enlaces antiguos y los marcadores de papelera."
+
+#: Duplikate/includes/class-admin.php:688
+msgid "Show the link under each title"
+msgstr "Mostrar el enlace bajo cada título"
+
+#: Duplikate/includes/class-admin.php:680
+msgid "Slug suffix"
+msgstr "Sufijo del slug"
+
+#: Duplikate/includes/class-admin.php:656
+msgid "Status of the copy"
+msgstr "Estado de la copia"
+
+#: Duplikate/includes/class-admin.php:663
+msgid "Stay on the list"
+msgstr "Quedarse en la lista"
+
+#: Duplikate/includes/class-admin.php:638
+msgid "Switching this off removes every Duplicate link without touching a single post."
+msgstr "Desactivar esta opción elimina todos los enlaces Duplicar sin tocar ni un solo contenido."
+
+#: Duplikate/includes/class-admin.php:485 Duplikate/includes/class-duplicator.php:93 Duplikate/includes/class-duplicator.php:144
+msgid "That content no longer exists."
+msgstr "Ese contenido ya no existe."
+
+#: Duplikate/includes/class-admin.php:643
+msgid "The Duplicate link appears in the list and the editor of the types you tick."
+msgstr "El enlace Duplicar aparece en la lista y en el editor de los tipos que marques."
+
+#: Duplikate/includes/class-admin.php:655
+msgid "The copy"
+msgstr "La copia"
+
+#: Duplikate/includes/class-admin.php:490 Duplikate/includes/class-admin.php:496 Duplikate/includes/class-duplicator.php:229
+msgid "The copy could not be created."
+msgstr "No se pudo crear la copia."
+
+#: Duplikate/includes/class-duplicator.php:223
+msgid "The copy could not be created: %s"
+msgstr "No se pudo crear la copia: %s"
+
+#: Duplikate/includes/class-admin.php:675
+msgid "The copy points at the same image; the file itself is not duplicated."
+msgstr "La copia apunta a la misma imagen; el archivo no se duplica."
+
+#: Duplikate/includes/class-admin.php:491
+msgid "The copy was cancelled and removed, so nothing was left half-written."
+msgstr "La copia se canceló y se eliminó, así que nada quedó a medio escribir."
+
+#: Duplikate/includes/class-duplicator.php:240
+msgid "The copy was cancelled: %s"
+msgstr "La copia se canceló: %s"
+
+#: Duplikate/includes/class-admin.php:688
+msgid "The “Duplicate” link in the list and the button in the editor."
+msgstr "El enlace «Duplicar» en la lista y el botón en el editor."
+
+#: Duplikate/includes/class-admin.php:488 Duplikate/includes/class-duplicator.php:101
+msgid "This content is not in a state that can be duplicated."
+msgstr "Este contenido no está en un estado que permita duplicarlo."
+
+#: Duplikate/includes/class-admin.php:486 Duplikate/includes/class-duplicator.php:97
+msgid "This kind of content cannot be duplicated."
+msgstr "Este tipo de contenido no se puede duplicar."
+
+#: Duplikate/includes/class-admin.php:679
+msgid "Title suffix"
+msgstr "Sufijo del título"
+
+#: Duplikate/includes/class-cli.php:91
+msgid "Unknown status."
+msgstr "Estado desconocido."
+
+#: Duplikate/includes/class-admin.php:624
+msgid "What is copied"
+msgstr "Qué se copia"
+
+#: Duplikate/includes/class-admin.php:697
+msgid "What is never copied"
+msgstr "Qué no se copia nunca"
+
+#: Duplikate/includes/class-admin.php:665
+msgid "With the list, the copy is marked as a draft and you can keep working."
+msgstr "Con la lista, la copia se marca como borrador y puedes seguir trabajando."
+
+#: Duplikate/includes/class-admin.php:382 Duplikate/includes/class-admin.php:408
+msgid "You are not allowed to change these settings."
+msgstr "No tienes permiso para cambiar estos ajustes."
+
+#: Duplikate/includes/class-admin.php:291 Duplikate/includes/class-admin.php:489 Duplikate/includes/class-duplicator.php:109 Duplikate/includes/class-duplicator.php:121
+msgid "You are not allowed to duplicate this content."
+msgstr "No tienes permiso para duplicar este contenido."
+
+#: Duplikate/includes/class-admin.php:149 Duplikate/includes/class-admin.php:372
+msgid "creates a draft copy"
+msgstr "crea una copia en borrador"
+
+#: Duplikate/includes/class-admin.php:179
+msgid "dev by zigmoon"
+msgstr "desarrollo de zigmoon"
+
+#: Duplikate/includes/class-cli.php:146
+msgid "no"
+msgstr "no"
+
+#: Duplikate/includes/class-admin.php:613
+msgid "v%s · PHP %s+ · WordPress %s+"
+msgstr "v%s · PHP %s+ · WordPress %s+"
+
+#: Duplikate/includes/class-cli.php:146
+msgid "yes"
+msgstr "sí"
+
+#: Duplikate/includes/class-admin.php:448
+msgid "%d draft copy created."
+msgid_plural "%d draft copies created."
+msgstr[0] "%d copia en borrador creada."
+msgstr[1] "%d copias en borrador creadas."
+
+#: Duplikate/includes/class-admin.php:461
+msgid "%d item could not be duplicated."
+msgid_plural "%d items could not be duplicated."
+msgstr[0] "%d elemento no se pudo duplicar."
+msgstr[1] "%d elementos no se pudieron duplicar."

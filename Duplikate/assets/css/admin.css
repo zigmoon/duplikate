@@ -1,0 +1,631 @@
+/**
+ * Duplikate — admin screen.
+ *
+ * Same Swiss system as the rest of the suite: white surface, hairline rules,
+ * 2 px corners, one accent, no shadow. Inter for text, Space Grotesk for
+ * headings, JetBrains Mono for micro-labels — all embedded, never fetched.
+ */
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('../fonts/inter-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('../fonts/inter-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+	font-family: 'Space Grotesk';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('../fonts/spacegrotesk-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 100 800;
+	font-display: swap;
+	src: url('../fonts/jetbrainsmono-latin.woff2') format('woff2');
+}
+
+.dup-admin {
+	--dup-ink: #0b0d10;
+	--dup-ink-2: #454c58;
+	--dup-dim: #6e7683;
+	--dup-line: #e5e7eb;
+	--dup-line-soft: #eff1f4;
+	--dup-line-strong: #cfd4db;
+	--dup-surface: #ffffff;
+	--dup-surface-2: #fbfcfd;
+	--dup-ok: #0f7a53;
+	--dup-ok-soft: #eaf6f0;
+	--dup-danger: #b42318;
+	--dup-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+	--dup-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	--dup-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	max-width: 1080px;
+	margin: 18px 20px 40px 2px;
+	color: var(--dup-ink);
+	font-family: var(--dup-sans);
+	font-size: 13.5px;
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+}
+
+.dup-admin *,
+.dup-admin *::before,
+.dup-admin *::after {
+	box-sizing: border-box;
+}
+
+/* ── Head ───────────────────────────────────────────────────────────────── */
+
+.dup-admin-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 24px;
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--dup-line);
+}
+
+.dup-brand {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.dup-brand-mark {
+	flex: none;
+	margin-top: 3px;
+}
+
+.dup-brand-mark svg {
+	display: block;
+	border: 1px solid var(--dup-line);
+	border-radius: 4px;
+}
+
+.dup-admin-head h1 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	color: var(--dup-ink);
+	font-family: var(--dup-display);
+	font-size: 26px;
+	font-weight: 600;
+	letter-spacing: -0.015em;
+	line-height: 1.15;
+}
+
+.dup-state {
+	padding: 2px 7px;
+	border: 1px solid var(--dup-line-strong);
+	border-radius: 2px;
+	color: var(--dup-dim);
+	font-family: var(--dup-mono);
+	font-size: 9.5px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.dup-state.is-on {
+	border-color: #bfe3d2;
+	background: var(--dup-ok-soft);
+	color: var(--dup-ok);
+}
+
+.dup-lead {
+	max-width: 62ch;
+	margin: 6px 0 0;
+	color: var(--dup-ink-2);
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.dup-meta {
+	margin: 2px 0 0;
+	color: var(--dup-dim);
+	font-family: var(--dup-mono);
+	font-size: 10.5px;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+}
+
+/* ── Tabs ───────────────────────────────────────────────────────────────── */
+
+.dup-tabs {
+	display: none;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid var(--dup-line);
+}
+
+.dup-admin--js .dup-tabs {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.dup-tab {
+	margin: 0 0 -1px;
+	padding: 11px 15px;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	border-radius: 0;
+	background: none;
+	color: var(--dup-dim);
+	font-family: var(--dup-sans);
+	font-size: 12.5px;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	cursor: pointer;
+}
+
+.dup-tab:hover {
+	color: var(--dup-ink);
+}
+
+.dup-tab[aria-selected="true"] {
+	border-bottom-color: var(--dup-ink);
+	color: var(--dup-ink);
+}
+
+.dup-tab:focus-visible {
+	outline: 2px solid var(--dup-ink);
+	outline-offset: -2px;
+}
+
+/* ── Panels ─────────────────────────────────────────────────────────────── */
+
+.dup-panel {
+	padding: 26px 28px 10px;
+	border: 1px solid var(--dup-line);
+	border-top: 0;
+	background: var(--dup-surface);
+}
+
+.dup-admin:not(.dup-admin--js) .dup-panel {
+	margin-top: 22px;
+	border-top: 1px solid var(--dup-line);
+}
+
+.dup-admin:not(.dup-admin--js) .dup-panel[hidden] {
+	display: block;
+}
+
+.dup-admin--js .dup-panel[hidden] {
+	display: none;
+}
+
+.dup-section {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 26px 0 4px;
+	font-family: var(--dup-display);
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: -0.005em;
+	line-height: 1.3;
+	color: var(--dup-ink);
+}
+
+.dup-section::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--dup-line);
+}
+
+.dup-panel > .dup-section:first-child {
+	margin-top: 0;
+}
+
+/* ── Switch ─────────────────────────────────────────────────────────────── */
+
+.dup-switch-field {
+	max-width: 660px;
+	margin: 16px 0;
+}
+
+.dup-switch-field label {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	color: var(--dup-ink);
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+/* A switch, not a box: same native input, so it submits and works without
+   JavaScript; only the rendering changes. */
+.dup-switch-field input[type="checkbox"] {
+	position: relative;
+	flex: none;
+	width: 42px;
+	height: 23px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid var(--dup-line-strong);
+	border-radius: 999px;
+	background: #eceef2;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.dup-switch-field input[type="checkbox"]::before {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(11, 13, 16, 0.3);
+	transition: transform 0.16s ease;
+}
+
+.dup-switch-field input[type="checkbox"]:checked {
+	border-color: var(--dup-ink);
+	background: var(--dup-ink);
+}
+
+.dup-switch-field input[type="checkbox"]:checked::before {
+	transform: translateX(19px);
+}
+
+.dup-switch-field input[type="checkbox"]:hover {
+	border-color: var(--dup-ink-2);
+}
+
+.dup-switch-field input[type="checkbox"]:focus {
+	border-color: var(--dup-ink);
+	box-shadow: 0 0 0 3px rgba(11, 13, 16, 0.12);
+	outline: 2px solid transparent;
+}
+
+.dup-switch-field input[type="checkbox"]:focus-visible {
+	outline: 2px solid var(--dup-ink);
+	outline-offset: 2px;
+}
+
+.dup-switch-field .dup-help {
+	margin-left: 54px;
+}
+
+/* ── Post type checkboxes ───────────────────────────────────────────────── */
+
+.dup-checks {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+	gap: 2px 24px;
+	margin: 12px 0 20px;
+}
+
+.dup-check {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 7px 0;
+	border-bottom: 1px solid var(--dup-line-soft);
+	color: var(--dup-ink);
+	font-size: 13px;
+	cursor: pointer;
+}
+
+.dup-check input[type="checkbox"] {
+	flex: none;
+	width: 16px;
+	height: 16px;
+	margin: 0;
+	border-color: var(--dup-line-strong);
+	border-radius: 2px;
+	accent-color: var(--dup-ink);
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.dup-check code {
+	margin-left: auto;
+	color: var(--dup-dim);
+	font-family: var(--dup-mono);
+	font-size: 10px;
+	letter-spacing: 0.03em;
+}
+
+/* ── Fields ─────────────────────────────────────────────────────────────── */
+
+.dup-field {
+	max-width: 660px;
+	margin: 18px 0 20px;
+}
+
+.dup-field > label {
+	display: block;
+	margin-bottom: 7px;
+	color: var(--dup-ink);
+	font-family: var(--dup-mono);
+	font-size: 10.5px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.dup-field input[type="text"],
+.dup-field input[type="number"],
+.dup-field select {
+	width: 100%;
+	max-width: 420px;
+	margin: 0;
+	padding: 8px 10px;
+	border: 1px solid var(--dup-line-strong);
+	border-radius: 2px;
+	background: #fff;
+	color: var(--dup-ink);
+	font-family: var(--dup-sans);
+	font-size: 13.5px;
+	line-height: 1.5;
+	box-shadow: none;
+}
+
+.dup-field--narrow input[type="text"],
+.dup-field--narrow input[type="number"],
+.dup-field--narrow select {
+	max-width: 320px;
+}
+
+.dup-field input:hover,
+.dup-field select:hover {
+	border-color: var(--dup-ink-2);
+}
+
+.dup-field input:focus,
+.dup-field select:focus {
+	border-color: var(--dup-ink);
+	box-shadow: 0 0 0 3px rgba(11, 13, 16, 0.12);
+	outline: 2px solid transparent;
+}
+
+.dup-help {
+	max-width: 62ch;
+	margin: 8px 0 0;
+	color: var(--dup-dim);
+	font-size: 11.5px;
+	line-height: 1.5;
+}
+
+.dup-panel > .dup-help {
+	margin-bottom: 14px;
+}
+
+/* ── Note ───────────────────────────────────────────────────────────────── */
+
+.dup-note {
+	max-width: 660px;
+	margin: 22px 0 10px;
+	padding: 13px 15px;
+	border: 1px solid var(--dup-line);
+	border-left: 3px solid var(--dup-line-strong);
+	border-radius: 2px;
+	background: var(--dup-surface-2);
+}
+
+.dup-note strong {
+	display: block;
+	margin-bottom: 4px;
+	color: var(--dup-ink);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+.dup-note p {
+	margin: 0;
+	color: var(--dup-ink-2);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+/* ── Save bar ───────────────────────────────────────────────────────────── */
+
+.dup-savebar {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 22px;
+	padding-top: 16px;
+	border-top: 1px solid var(--dup-line);
+}
+
+.dup-savebar-hint {
+	color: var(--dup-dim);
+	font-size: 11.5px;
+}
+
+.dup-savebar .button-primary {
+	padding: 4px 18px;
+	border: 1px solid var(--dup-ink);
+	border-radius: 2px;
+	background: var(--dup-ink);
+	color: #fff;
+	font-family: var(--dup-sans);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-shadow: none;
+	box-shadow: none;
+	text-transform: uppercase;
+	transition: opacity 0.14s ease;
+}
+
+.dup-savebar .button-primary:hover,
+.dup-savebar .button-primary:focus {
+	border-color: var(--dup-ink);
+	background: #1b2027;
+	color: #fff;
+	box-shadow: 0 0 0 3px rgba(11, 13, 16, 0.14);
+}
+
+/* ── Credits ────────────────────────────────────────────────────────────── */
+
+.dup-credits {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 6px 18px;
+	margin-top: 26px;
+	padding-top: 12px;
+	border-top: 1px solid var(--dup-line);
+}
+
+.dup-credits p {
+	margin: 0;
+	color: var(--dup-dim);
+	font-size: 11.5px;
+	line-height: 1.5;
+}
+
+.dup-credits-links {
+	font-family: var(--dup-mono);
+	font-size: 10.5px;
+	letter-spacing: 0.04em;
+}
+
+.dup-credits-links span {
+	margin: 0 4px;
+	color: var(--dup-line-strong);
+}
+
+.dup-admin a {
+	color: var(--dup-ink);
+	text-decoration: underline;
+	text-decoration-color: var(--dup-line-strong);
+	text-underline-offset: 2px;
+}
+
+.dup-admin a:hover,
+.dup-admin a:focus {
+	color: #0a66ff;
+	text-decoration-color: currentcolor;
+}
+
+/* ── Notices, outside .dup-admin ────────────────────────────────────────── */
+
+.duplikate-welcome p {
+	margin: 0.5em 0;
+}
+
+.duplikate-welcome-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}
+
+.duplikate-welcome-credit {
+	color: #50575e;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 10.5px;
+	letter-spacing: 0.04em;
+}
+
+/* ── Editor submit box ──────────────────────────────────────────────────── */
+
+.duplikate-action {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.duplikate-action-hint {
+	color: #50575e;
+	font-size: 11px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 782px) {
+	.dup-admin-head {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.dup-admin-head h1 {
+		font-size: 21px;
+	}
+
+	.dup-brand-mark svg {
+		width: 30px;
+		height: 30px;
+	}
+
+	.dup-panel {
+		padding: 20px 16px 6px;
+	}
+
+	.dup-checks {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.dup-savebar {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 9px;
+	}
+
+	.dup-savebar .button-primary {
+		width: 100%;
+		text-align: center;
+	}
+
+	.dup-credits {
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 600px) {
+	.dup-admin {
+		margin-right: 10px;
+	}
+
+	.dup-tabs {
+		gap: 0;
+	}
+
+	.dup-tab {
+		padding: 10px 9px;
+		font-size: 11px;
+	}
+
+	.dup-field input[type="text"],
+	.dup-field input[type="number"],
+	.dup-field select {
+		max-width: none;
+	}
+}
